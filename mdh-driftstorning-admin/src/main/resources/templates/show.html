@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Visa Driftavbrott</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/list" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
+                </h3>
+                <h2 th:text="${driftavbrott.kanalPost.text}"></h2>
+                <dl class="list">
+                    <dt>Start</dt>
+                    <dd th:text="${#strings.defaultString(driftavbrott.startDatum, '') + ' ' + driftavbrott.startTid}"></dd>
+                    <dt>Slut</dt>
+                    <dd th:text="${#strings.defaultString(driftavbrott.slutDatum, '') + ' ' + driftavbrott.slutTid}"></dd>
+                    <dt>Anledning</dt>
+                    <dd th:text="${driftavbrott.anledningPost.text}"></dd>
+                </dl>
+                <form action="/delete" method="post">
+                    <input type="hidden" name="id" th:value="${driftavbrott.id}" />
+                    <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
+                        <a th:href="@{'/edit/' + ${driftavbrott.id}}" class="btn btn-warning">Edit</a></h2>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

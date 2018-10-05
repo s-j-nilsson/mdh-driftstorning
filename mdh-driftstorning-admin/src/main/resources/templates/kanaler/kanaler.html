@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Kanaler</title>
+        <script type="text/javascript" class="init">
+
+          $(document).ready(function() {
+            $('#product-table').DataTable();
+          } );
+
+        </script>
+    </head>
+    <body>
+
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/kanaler/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Kanal</a>
+                </h3>
+                <h2>Kanaler</h2>
+                <div class="table-responsive">
+                    <table class="table, display" id="product-table">
+                        <thead>
+                            <tr>
+                                <th>Nyckel</th>
+                                <th>Text</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="kanalPost : ${kanaler}">
+                                <td><a th:text="${kanalPost.namn}" th:href="@{'/kanaler/show/' + ${kanalPost.id}}"></a></td>
+                                <td th:text="${kanalPost.text}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

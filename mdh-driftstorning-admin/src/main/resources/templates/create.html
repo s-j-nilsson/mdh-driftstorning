@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Skapa driftavbrott</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
+                </h3>
+                <h2>Skapa driftavbrott</h2>
+                <form action="/create" th:object="${driftavbrott}" method="post">
+                    <div class="form-group">
+                        <label for="kanalPost">Kanal:</label>
+                        <select class="form-control" id="kanalPost" th:field="*{kanalPost}">
+                            <option th:each="kanalPost : ${kanaler}" th:value="${kanalPost.id}" th:text="${kanalPost.text}">
+                            </option>
+                        </select>
+                        <!--<input type="text" class="form-control" name="kanalPost" />-->
+                        <div class="error" th:if="${#fields.hasErrors('kanalPost')}" th:errors="*{kanalPost}">Name Error</div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="startdatum">Startdatum</label>
+                            <input type="date" class="form-control" id="startdatum" th:field="*{startDatum}" />
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="starttid">Starttid</label>
+                            <input type="time" class="form-control" id="starttid" th:field="*{startTid}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="slutdatum">Slutdatum</label>
+                            <input type="date" class="form-control" id="slutdatum" th:field="*{slutDatum}" />
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sluttid">Sluttid</label>
+                            <input type="time" class="form-control" id="sluttid" th:field="*{slutTid}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="anledningPost">Anledning</label>
+                        <select class="form-control" id="anledningPost" th:field="*{anledningPost}">
+                            <option th:each="anledningPost : ${anledningar}" th:value="${anledningPost.id}" th:text="${anledningPost.text}">
+                            </option>
+                        </select>
+                        <div class="error" th:if="${#fields.hasErrors('anledningPost')}" th:errors="*{anledningPost}">Name Error</div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

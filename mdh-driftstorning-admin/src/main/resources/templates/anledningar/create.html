@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Skapa anledningPost</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Anledningar</a>
+                </h3>
+                <h2>Skapa anledningPost</h2>
+                <form action="/anledningar/create" th:object="${anledningPost}" method="post">
+                    <div class="form-group">
+                        <label for="namn">Nyckel</label>
+                        <input type="text" class="form-control" name="namn" />
+                        <div class="error" th:if="${#fields.hasErrors('namn')}" th:errors="*{namn}">Name Error</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">Text</label>
+                        <input type="text" class="form-control" name="text" />
+                        <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Name Error</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="meddelande">Meddelande</label>
+                        <input type="text" class="form-control" name="meddelande" />
+                        <div class="error" th:if="${#fields.hasErrors('meddelande')}" th:errors="*{meddelande}">Name Error</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

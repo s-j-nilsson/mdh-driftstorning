@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Driftavbrott</title>
+        <script type="text/javascript" class="init">
+
+          $(document).ready(function() {
+            $('#product-table').DataTable();
+          } );
+
+        </script>
+    </head>
+    <body>
+
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Driftavbrott</a>
+                </h3>
+                <h2>Driftavbrott</h2>
+                <div class="table-responsive">
+                    <table class="table, display" id="product-table">
+                        <thead>
+                            <tr>
+                                <th>Kanal</th>
+                                <th>Start</th>
+                                <th>Slut</th>
+                                <th>Anledning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="driftavbrott : ${driftavbrottList}">
+                                <td><a th:text="${driftavbrott.kanalPost.text}" th:href="@{'/show/' + ${driftavbrott.id}}"></a></td>
+                                <td th:text="${#strings.defaultString(driftavbrott.startDatum, '') + ' ' + driftavbrott.startTid}"></td>
+                                <td th:text="${#strings.defaultString(driftavbrott.slutDatum, '') + ' ' + driftavbrott.slutTid}"></td>
+                                <td th:text="${driftavbrott.anledningPost.text}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
