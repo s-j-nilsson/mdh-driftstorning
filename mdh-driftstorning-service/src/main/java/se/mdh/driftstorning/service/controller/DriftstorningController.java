@@ -1,5 +1,6 @@
 package se.mdh.driftstorning.service.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
@@ -39,8 +40,11 @@ public class DriftstorningController {
   public Driftstorningar getPagaendeDriftstorning(@ApiParam(value = "Kanaler att kontrollera") @RequestParam(value = "kanal", required = false) final List<String> kanaler,
                                                   @ApiParam(value = "Marginal i minuter") @RequestParam(value = "marginal", defaultValue = "0") final int marginalMinuter,
                                                   HttpServletResponse response) {
-    Driftstorningar pagaendeDriftstorningar = service.getPagaendeDriftstorningar(kanaler, marginalMinuter);
-    if(pagaendeDriftstorningar != null) {
+    Driftstorningar allaDriftstorningar = service.getAllaDriftstorningar();
+
+    Driftstorningar pagaendeDriftstorningar = service.filterDriftstorningar(allaDriftstorningar, kanaler, marginalMinuter, LocalDateTime.now());
+
+    if(pagaendeDriftstorningar == null || pagaendeDriftstorningar.getDriftstorningar().isEmpty()) {
       response.setStatus(HttpStatus.NO_CONTENT.value());
     }
 

@@ -22,10 +22,6 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <artifactId>mdh-driftstorning-common</artifactId>
-      <groupId>se.mdh.driftstorning</groupId>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
@@ -41,6 +37,9 @@
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-xml</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>se.mdh.driftstorning</groupId>
+      <artifactId>mdh-driftstorning-common</artifactId>
+    </dependency>
   </dependencies>
 </project>

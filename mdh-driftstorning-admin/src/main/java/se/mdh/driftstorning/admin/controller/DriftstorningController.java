@@ -24,7 +24,6 @@ public class DriftstorningController {
 
   private final KanalRepository kanalRepository;
 
-  @Autowired
   public DriftstorningController(DriftstorningRepository driftstorningRepository, AnledningRepository anledningRepository, KanalRepository kanalRepository) {
     this.driftstorningRepository = driftstorningRepository;
     this.anledningRepository = anledningRepository;
