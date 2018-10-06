@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import se.mdh.driftstorning.admin.repository.AnledningRepository;
+import se.mdh.driftstorning.admin.repository.DriftstorningRepository;
+import se.mdh.driftstorning.admin.repository.KanalRepository;
 import se.mdh.driftstorning.common.model.DriftstorningPost;
-import se.mdh.driftstorning.common.repository.AnledningRepository;
-import se.mdh.driftstorning.common.repository.DriftstorningRepository;
-import se.mdh.driftstorning.common.repository.KanalRepository;
 
 @Controller
 public class DriftstorningController {

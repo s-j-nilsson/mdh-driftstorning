@@ -9,10 +9,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import se.mdh.driftstorning.common.model.DriftstorningPost;
-import se.mdh.driftstorning.common.repository.DriftstorningRepository;
 import se.mdh.driftstorning.service.adapter.DriftstorningarAdapter;
 import se.mdh.driftstorning.service.model.Driftstorning;
 import se.mdh.driftstorning.service.model.Driftstorningar;
+import se.mdh.driftstorning.service.repository.DriftstorningRepository;
 
 @Service
 public class DriftstorningService {

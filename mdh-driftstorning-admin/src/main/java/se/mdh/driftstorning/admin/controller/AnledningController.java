@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import se.mdh.driftstorning.admin.repository.AnledningRepository;
 import se.mdh.driftstorning.common.model.AnledningPost;
-import se.mdh.driftstorning.common.repository.AnledningRepository;
 
 @Controller
 @RequestMapping(value = "/anledningar")

@@ -1,4 +1,4 @@
-package se.mdh.driftstorning.common.repository;
+package se.mdh.driftstorning.admin.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import se.mdh.driftstorning.common.model.AnledningPost;
