@@ -30,8 +30,7 @@
     <dependencies>
       <dependency>
         <groupId>org.springframework.data</groupId>
-        <artifactId>spring-data-mongodb</artifactId>
-        <version>1.10.7.RELEASE</version>
+        <artifactId>spring-boot-starter-data-mongodb</artifactId>
       </dependency>
       <dependency>
         <groupId>javax.validation</groupId>
