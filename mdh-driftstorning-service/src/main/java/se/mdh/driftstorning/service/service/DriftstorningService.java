@@ -48,6 +48,9 @@ public class DriftstorningService {
     if(driftstorningar != null) {
       List<Driftstorning> filteredDriftstorningList = driftstorningar.getDriftstorningar().stream()
           .filter(driftstorning -> {
+            if(kanaler.isEmpty()) {
+              return true;
+            }
             for(String kanal : kanaler) {
               if(driftstorning.getKanal().startsWith(kanal)) {
                 return true;
