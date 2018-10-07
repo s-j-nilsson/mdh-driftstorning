@@ -1,5 +1,7 @@
 package se.mdh.driftstorning.admin.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +41,21 @@ public class DriftstorningController {
     model.addAttribute("driftstorning", driftstorningPost);
     model.addAttribute("kanaler", kanalRepository.findAll());
     model.addAttribute("anledningar", anledningRepository.findAll());
+    List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
+    List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
+
+    List<String> tidigareMeddelandenSv = byMeddelandeSvIsNotNull.stream()
+        .map(d -> d.getMeddelandeSv())
+        .sorted()
+        .collect(Collectors.toList());
+    model.addAttribute("tidigareMeddelandenSv", tidigareMeddelandenSv);
+
+    List<String> tidigareMeddelandenEn = byMeddelandeEnIsNotNull.stream()
+        .map(d -> d.getMeddelandeEn())
+        .sorted()
+        .collect(Collectors.toList());
+    model.addAttribute("tidigareMeddelandenEn", tidigareMeddelandenEn);
+
     return "create";
   }
 
@@ -71,6 +88,20 @@ public class DriftstorningController {
     model.addAttribute("driftstorning", driftstorningRepository.findById(id).get());
     model.addAttribute("kanaler", kanalRepository.findAll());
     model.addAttribute("anledningar", anledningRepository.findAll());
+    List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
+    List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
+
+    List<String> tidigareMeddelandenSv = byMeddelandeSvIsNotNull.stream()
+        .map(d -> d.getMeddelandeSv())
+        .sorted()
+        .collect(Collectors.toList());
+    model.addAttribute("tidigareMeddelandenSv", tidigareMeddelandenSv);
+
+    List<String> tidigareMeddelandenEn = byMeddelandeEnIsNotNull.stream()
+        .map(d -> d.getMeddelandeEn())
+        .sorted()
+        .collect(Collectors.toList());
+    model.addAttribute("tidigareMeddelandenEn", tidigareMeddelandenEn);
     return "edit";
   }
 

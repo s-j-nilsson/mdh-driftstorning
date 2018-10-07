@@ -5,6 +5,19 @@
       layout:decorator="default">
     <head>
         <title>Skapa driftstörning</title>
+        <script type="text/javascript" class="init">
+
+          $(document).ready(function() {
+            $('#tidigareMeddelandeSv').on('change', function(){
+              $('#meddelandeSv').val($(this).val());
+            });
+
+            $('#tidigareMeddelandeEn').on('change', function(){
+              $('#meddelandeEn').val($(this).val());
+            });
+          } );
+
+        </script>
     </head>
     <body>
         <div layout:fragment="content" class="row">
@@ -52,6 +65,36 @@
                             </option>
                         </select>
                         <div class="error" th:if="${#fields.hasErrors('anledningPost')}" th:errors="*{anledningPost}">Name Error</div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="meddelandeSv">Meddelande på svenska</label>
+                            <input type="text" class="form-control" id="meddelandeSv" th:field="*{meddelandeSv}" />
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="tidigareMeddelandeSv">Tidigare meddelanden</label>
+                            <select class="form-control" id="tidigareMeddelandeSv">
+                                <option value="">--Välj--</option>
+                                <option th:each="meddelande : ${tidigareMeddelandenSv}" th:value="${meddelande}" th:text="${meddelande}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="meddelandeSv">Meddelande på engelska</label>
+                            <input type="text" class="form-control" id="meddelandeEn" th:field="*{meddelandeEn}" />
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="tidigareMeddelandeEn">Tidigare meddelanden</label>
+                            <select class="form-control" id="tidigareMeddelandeEn">
+                                <option value="">--Välj--</option>
+                                <option th:each="meddelande : ${tidigareMeddelandenEn}" th:value="${meddelande}" th:text="${meddelande}">
+                                </option>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>

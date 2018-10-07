@@ -31,6 +31,10 @@ public class DriftstorningPost {
 	@NotNull(message = "Fältet måste ha ett värde")
 	private AnledningPost anledningPost;
 
+	private String meddelandeSv;
+
+	private String meddelandeEn;
+
 	public String getId() {
 		return id;
 	}
@@ -85,6 +89,22 @@ public class DriftstorningPost {
 
 	public void setAnledningPost(AnledningPost anledningPost) {
 		this.anledningPost = anledningPost;
+	}
+
+	public String getMeddelandeSv() {
+		return meddelandeSv;
+	}
+
+	public void setMeddelandeSv(String meddelandeSv) {
+		this.meddelandeSv = meddelandeSv;
+	}
+
+	public String getMeddelandeEn() {
+		return meddelandeEn;
+	}
+
+	public void setMeddelandeEn(String meddelandeEn) {
+		this.meddelandeEn = meddelandeEn;
 	}
 
 	@Override

@@ -20,6 +20,10 @@
                     <dd th:text="${#strings.defaultString(driftstorning.slutDatum, '') + ' ' + driftstorning.slutTid}"></dd>
                     <dt>Anledning</dt>
                     <dd th:text="${driftstorning.anledningPost.text}"></dd>
+                    <dt>Meddelande på svenska</dt>
+                    <dd th:text="${driftstorning.meddelandeSv}"></dd>
+                    <dt>Meddelande på engelska</dt>
+                    <dd th:text="${driftstorning.meddelandeEn}"></dd>
                 </dl>
                 <form action="/delete" method="post">
                     <input type="hidden" name="id" th:value="${driftstorning.id}" />
