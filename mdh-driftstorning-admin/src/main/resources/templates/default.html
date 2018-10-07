@@ -29,7 +29,7 @@
         <a href="/list" class="navbar-brand"><img src="/img/mdh-neg-logo.png"/></a>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left" th:with="view=${#httpServletRequest.getServletPath()}">
-                <li th:classappend="${#strings.startsWith(view,'/kanaler') or #strings.startsWith(view,'/anledningar')? '' : 'active'}"><a href="/list">Driftavbrott</a></li>
+                <li th:classappend="${#strings.startsWith(view,'/kanaler') or #strings.startsWith(view,'/anledningar')? '' : 'active'}"><a href="/list">Driftstörning</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" th:with="view=${#httpServletRequest.getServletPath()}">
                 <li th:classappend="${#strings.startsWith(view,'/kanaler')? 'active' : ''}"><a href="/kanaler/list">Kanaler</a></li>

@@ -30,13 +30,13 @@ public class DriftstorningController {
 
   @GetMapping("/list")
   public String product(Model model) {
-    model.addAttribute("driftavbrottList", driftstorningRepository.findAll());
+    model.addAttribute("driftstorningList", driftstorningRepository.findAll());
     return "list";
   }
 
   @GetMapping("/create")
   public String create(DriftstorningPost driftstorningPost, Model model) {
-    model.addAttribute("driftstorningPost", driftstorningPost);
+    model.addAttribute("driftstorning", driftstorningPost);
     model.addAttribute("kanaler", kanalRepository.findAll());
     model.addAttribute("anledningar", anledningRepository.findAll());
     return "create";
@@ -54,7 +54,7 @@ public class DriftstorningController {
 
   @GetMapping("/show/{id}")
   public String show(@PathVariable String id, Model model) {
-    model.addAttribute("driftavbrott", driftstorningRepository.findById(id).get());
+    model.addAttribute("driftstorning", driftstorningRepository.findById(id).get());
     return "show";
   }
 
@@ -68,7 +68,7 @@ public class DriftstorningController {
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable String id, Model model) {
-    model.addAttribute("driftavbrott", driftstorningRepository.findById(id).get());
+    model.addAttribute("driftstorning", driftstorningRepository.findById(id).get());
     model.addAttribute("kanaler", kanalRepository.findAll());
     model.addAttribute("anledningar", anledningRepository.findAll());
     return "edit";

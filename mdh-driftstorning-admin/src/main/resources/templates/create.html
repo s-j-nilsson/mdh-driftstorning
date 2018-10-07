@@ -4,16 +4,16 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="default">
     <head>
-        <title>Skapa driftavbrott</title>
+        <title>Skapa driftstörning</title>
     </head>
     <body>
         <div layout:fragment="content" class="row">
             <div class="col-xs-8 col-md-8">
                 <h3>
-                    <a href="/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
+                    <a href="/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftstörning</a>
                 </h3>
-                <h2>Skapa driftavbrott</h2>
-                <form action="/create" th:object="${driftavbrott}" method="post">
+                <h2>Skapa driftstörning</h2>
+                <form action="/create" th:object="${driftstorning}" method="post">
                     <div class="form-group">
                         <label for="kanalPost">Kanal:</label>
                         <select class="form-control" id="kanalPost" th:field="*{kanalPost}">

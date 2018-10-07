@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="default">
     <head>
-        <title>Driftavbrott</title>
+        <title>Driftstörning</title>
         <script type="text/javascript" class="init">
 
           $(document).ready(function() {
@@ -18,9 +18,9 @@
         <div layout:fragment="content" class="row">
             <div class="col-xs-8 col-md-8">
                 <h3>
-                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Driftavbrott</a>
+                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Driftstörning</a>
                 </h3>
-                <h2>Driftavbrott</h2>
+                <h2>Driftstörning</h2>
                 <div class="table-responsive">
                     <table class="table, display" id="product-table">
                         <thead>
@@ -32,11 +32,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="driftavbrott : ${driftavbrottList}">
-                                <td><a th:text="${driftavbrott.kanalPost.text}" th:href="@{'/show/' + ${driftavbrott.id}}"></a></td>
-                                <td th:text="${#strings.defaultString(driftavbrott.startDatum, '') + ' ' + driftavbrott.startTid}"></td>
-                                <td th:text="${#strings.defaultString(driftavbrott.slutDatum, '') + ' ' + driftavbrott.slutTid}"></td>
-                                <td th:text="${driftavbrott.anledningPost.text}"></td>
+                            <tr th:each="driftstorning : ${driftstorningList}">
+                                <td><a th:text="${driftstorning.kanalPost.text}" th:href="@{'/show/' + ${driftstorning.id}}"></a></td>
+                                <td th:text="${#strings.defaultString(driftstorning.startDatum, '') + ' ' + driftstorning.startTid}"></td>
+                                <td th:text="${#strings.defaultString(driftstorning.slutDatum, '') + ' ' + driftstorning.slutTid}"></td>
+                                <td th:text="${driftstorning.anledningPost.text}"></td>
                             </tr>
                         </tbody>
                     </table>
