@@ -34,7 +34,7 @@ public class DriftstorningController {
   })
   @ApiOperation(value = "Hämta pågående driftstörning för ett antal kanaler")
   @GetMapping("/pagaende")
-  public Driftstorningar getPagaendeDriftstorning(@ApiParam(value = "Kanaler att kontrollera") @RequestParam(value = "kanal", required = false) final List<String> kanaler,
+  public Driftstorningar getPagaendeDriftstorning(@ApiParam(value = "Kanaler att kontrollera") @RequestParam(value = "kanal", required = false, defaultValue = "") final List<String> kanaler,
                                                   @ApiParam(value = "Marginal i minuter") @RequestParam(value = "marginal", defaultValue = "0") final int marginalMinuter,
                                                   HttpServletResponse response) {
     Driftstorningar allaDriftstorningar = service.getAllaDriftstorningar();
