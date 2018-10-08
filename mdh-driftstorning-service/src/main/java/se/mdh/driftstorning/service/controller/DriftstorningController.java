@@ -32,7 +32,7 @@ public class DriftstorningController {
       @ApiResponse(code = 200, message = "Det finns en driftstörning."),
       @ApiResponse(code = 204, message = "Det finns ingen driftstörning."),
   })
-  @ApiOperation(value = "Hämta pågående driftstörning för ett antal kanaler")
+  @ApiOperation(value = "Hämta pågående driftstörningar för ett antal kanaler")
   @GetMapping("/pagaende")
   public Driftstorningar getPagaendeDriftstorning(@ApiParam(value = "Kanaler att kontrollera") @RequestParam(value = "kanal", required = false, defaultValue = "") final List<String> kanaler,
                                                   @ApiParam(value = "Marginal i minuter") @RequestParam(value = "marginal", defaultValue = "0") final int marginalMinuter,
@@ -46,5 +46,24 @@ public class DriftstorningController {
     }
 
     return pagaendeDriftstorningar;
+  }
+
+  @ApiResponses(value = {
+      @ApiResponse(code = 200, message = "Det finns en driftstörning."),
+      @ApiResponse(code = 204, message = "Det finns ingen driftstörning."),
+  })
+  @ApiOperation(value = "Hämta alla driftstörningar för ett antal kanaler")
+  @GetMapping("/")
+  public Driftstorningar getAllaDriftstorningar(@ApiParam(value = "Kanaler att kontrollera") @RequestParam(value = "kanal", required = false, defaultValue = "") final List<String> kanaler,
+                                                  HttpServletResponse response) {
+    Driftstorningar allaDriftstorningar = service.getAllaDriftstorningar();
+
+    Driftstorningar driftstorningar = service.filterDriftstorningar(allaDriftstorningar, kanaler);
+
+    if(driftstorningar == null || driftstorningar.getDriftstorningar().isEmpty()) {
+      response.setStatus(HttpStatus.NO_CONTENT.value());
+    }
+
+    return driftstorningar;
   }
 }

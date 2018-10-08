@@ -45,6 +45,27 @@ public class DriftstorningService {
    * @return
    */
   public Driftstorningar filterDriftstorningar(Driftstorningar driftstorningar, List<String> kanaler, int marginalMinuter, @NotNull LocalDateTime aktuellVidTidpunkt) {
+    Driftstorningar allaDriftstorningar = filterDriftstorningar(driftstorningar, kanaler);
+
+    if(driftstorningar != null) {
+      List<Driftstorning> filteredDriftstorningList = allaDriftstorningar.getDriftstorningar().stream()
+          .filter(d ->
+                      aktuellVidTidpunkt.isAfter(d.getStart().minusMinutes(marginalMinuter))
+                          && aktuellVidTidpunkt.isBefore(d.getSlut().plusMinutes(marginalMinuter)))
+          .sorted(Comparator.comparing(Driftstorning::getSlut))
+          .collect(Collectors.toList());
+      driftstorningar.setDriftstorningar(filteredDriftstorningList);
+    }
+    return driftstorningar;
+  }
+
+  /**
+   * Filtrerar {@link Driftstorningar} enligt kanaler
+   * @param driftstorningar
+   * @param kanaler
+   * @return
+   */
+  public Driftstorningar filterDriftstorningar(Driftstorningar driftstorningar, List<String> kanaler) {
     if(driftstorningar != null) {
       List<Driftstorning> filteredDriftstorningList = driftstorningar.getDriftstorningar().stream()
           .filter(driftstorning -> {
@@ -58,8 +79,6 @@ public class DriftstorningService {
             }
             return false;
           })
-          .filter(d ->  aktuellVidTidpunkt.isAfter(d.getStart().minusMinutes(marginalMinuter))
-              && aktuellVidTidpunkt.isBefore(d.getSlut().plusMinutes(marginalMinuter)))
           .sorted(Comparator.comparing(Driftstorning::getSlut))
           .collect(Collectors.toList());
       driftstorningar.setDriftstorningar(filteredDriftstorningList);
