@@ -13,23 +13,23 @@
                     <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Anledningar</a>
                 </h3>
                 <h2>Uppdatera Anledning</h2>
-                <form action="/anledningar/update" th:object="${anledningPost}" method="post">
+                <form action="/anledningar/update" th:object="${anledning}" method="post">
                     <div class="form-group">
                         <label for="namn">Nyckel</label>
-                        <input type="text" class="form-control" name="namn" th:value="${anledningPost.namn}" />
+                        <input type="text" class="form-control" name="namn" th:value="${anledning.namn}" />
                         <div class="error" th:if="${#fields.hasErrors('namn')}" th:errors="*{namn}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="text">Text</label>
-                        <input type="text" class="form-control" name="text" th:value="${anledningPost.text}" />
+                        <input type="text" class="form-control" name="text" th:value="${anledning.text}" />
                         <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="meddelande">Meddelande</label>
-                        <input type="text" class="form-control" name="meddelande" th:value="${anledningPost.meddelande}" />
+                        <input type="text" class="form-control" name="meddelande" th:value="${anledning.meddelande}" />
                         <div class="error" th:if="${#fields.hasErrors('meddelande')}" th:errors="*{text}">Name Error</div>
                     </div>
-                    <input type="hidden" name="id" th:value="${anledningPost.id}" />
+                    <input type="hidden" name="id" th:value="${anledning.id}" />
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
             </div>

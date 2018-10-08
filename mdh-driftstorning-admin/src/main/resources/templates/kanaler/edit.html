@@ -13,18 +13,18 @@
                     <a href="/kanaler/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Kanaler</a>
                 </h3>
                 <h2>Uppdatera Kanal</h2>
-                <form action="/kanaler/update" th:object="${kanalPost}" method="post">
+                <form action="/kanaler/update" th:object="${kanal}" method="post">
                     <div class="form-group">
                         <label for="namn">Nyckel</label>
-                        <input type="text" class="form-control" name="namn" th:value="${kanalPost.namn}" />
+                        <input type="text" class="form-control" name="namn" th:value="${kanal.namn}" />
                         <div class="error" th:if="${#fields.hasErrors('namn')}" th:errors="*{namn}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="text">Text</label>
-                        <input type="text" class="form-control" name="text" th:value="${kanalPost.text}" />
+                        <input type="text" class="form-control" name="text" th:value="${kanal.text}" />
                         <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Name Error</div>
                     </div>
-                    <input type="hidden" name="id" th:value="${kanalPost.id}" />
+                    <input type="hidden" name="id" th:value="${kanal.id}" />
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
             </div>

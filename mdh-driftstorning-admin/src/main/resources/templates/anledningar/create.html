@@ -13,7 +13,7 @@
                     <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Anledningar</a>
                 </h3>
                 <h2>Skapa Anledning</h2>
-                <form action="/anledningar/create" th:object="${anledningPost}" method="post">
+                <form action="/anledningar/create" th:object="${anledning}" method="post">
                     <div class="form-group">
                         <label for="namn">Nyckel</label>
                         <input type="text" class="form-control" name="namn" />

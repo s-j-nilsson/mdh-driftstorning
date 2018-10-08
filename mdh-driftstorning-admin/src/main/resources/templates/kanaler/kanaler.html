@@ -30,9 +30,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="kanalPost : ${kanaler}">
-                                <td><a th:text="${kanalPost.namn}" th:href="@{'/kanaler/show/' + ${kanalPost.id}}"></a></td>
-                                <td th:text="${kanalPost.text}"></td>
+                            <tr th:each="kanal : ${kanaler}">
+                                <td><a th:text="${kanal.namn}" th:href="@{'/kanaler/show/' + ${kanal.id}}"></a></td>
+                                <td th:text="${kanal.text}"></td>
                             </tr>
                         </tbody>
                     </table>

@@ -31,10 +31,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="anledningPost : ${anledningar}">
-                                <td><a th:text="${anledningPost.namn}" th:href="@{'/anledningar/show/' + ${anledningPost.id}}"></a></td>
-                                <td th:text="${anledningPost.text}"></td>
-                                <td th:text="${anledningPost.meddelande}"></td>
+                            <tr th:each="anledning : ${anledningar}">
+                                <td><a th:text="${anledning.namn}" th:href="@{'/anledningar/show/' + ${anledning.id}}"></a></td>
+                                <td th:text="${anledning.text}"></td>
+                                <td th:text="${anledning.meddelande}"></td>
                             </tr>
                         </tbody>
                     </table>
