@@ -62,6 +62,7 @@ public class DriftstorningController {
     List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
     return byMeddelandeSvIsNotNull.stream()
         .map(d -> d.getMeddelandeSv())
+        .distinct()
         .sorted()
         .collect(Collectors.toList());
   }
@@ -71,6 +72,7 @@ public class DriftstorningController {
     List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
     return byMeddelandeEnIsNotNull.stream()
         .map(d -> d.getMeddelandeEn())
+        .distinct()
         .sorted()
         .collect(Collectors.toList());
   }
