@@ -1,6 +1,7 @@
 package se.mdh.driftstorning.common.model;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,11 +12,11 @@ public class AnledningPost {
   @Id
   private String id;
 
-  @NotEmpty
+  @NotNull(message = "Fältet måste ha ett värde")
   @Indexed(unique = true)
   private String namn;
 
-  @NotEmpty
+  @NotNull(message = "Fältet måste ha ett värde")
   private String text;
 
   private String meddelande;
