@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,6 +15,7 @@ public class DriftstorningPost {
 	private String id;
 
 	@NotNull(message = "Fältet måste ha ett värde")
+	@DBRef
 	private KanalPost kanalPost;
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -29,6 +31,7 @@ public class DriftstorningPost {
 	private LocalTime slutTid;
 
 	@NotNull(message = "Fältet måste ha ett värde")
+	@DBRef
 	private AnledningPost anledningPost;
 
 	private String meddelandeSv;
