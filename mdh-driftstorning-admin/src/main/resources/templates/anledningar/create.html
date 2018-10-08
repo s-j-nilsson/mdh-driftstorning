@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="default">
     <head>
-        <title>Skapa anledningPost</title>
+        <title>Skapa Anledning</title>
     </head>
     <body>
         <div layout:fragment="content" class="row">
@@ -12,7 +12,7 @@
                 <h3>
                     <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Anledningar</a>
                 </h3>
-                <h2>Skapa anledningPost</h2>
+                <h2>Skapa Anledning</h2>
                 <form action="/anledningar/create" th:object="${anledningPost}" method="post">
                     <div class="form-group">
                         <label for="namn">Nyckel</label>

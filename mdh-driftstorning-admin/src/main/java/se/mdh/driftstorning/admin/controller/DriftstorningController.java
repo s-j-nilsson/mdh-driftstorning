@@ -48,12 +48,12 @@ public class DriftstorningController {
 
   @ModelAttribute("kanaler")
   public List<KanalPost> getKanaler() {
-    return kanalRepository.findAll();
+    return kanalRepository.findAllByOrderByTextAsc();
   }
 
   @ModelAttribute("anledningar")
   public List<AnledningPost> getAnledningar() {
-    return anledningRepository.findAll();
+    return anledningRepository.findAllByOrderByTextAsc();
   }
 
 

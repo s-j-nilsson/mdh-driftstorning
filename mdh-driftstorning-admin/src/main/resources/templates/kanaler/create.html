@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="default">
     <head>
-        <title>Skapa kanalPost</title>
+        <title>Skapa Kanal</title>
     </head>
     <body>
         <div layout:fragment="content" class="row">
@@ -12,7 +12,7 @@
                 <h3>
                     <a href="/kanaler/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Kanaler</a>
                 </h3>
-                <h2>Skapa kanalPost</h2>
+                <h2>Skapa Kanal</h2>
                 <form action="/kanaler/create" th:object="${kanalPost}" method="post">
                     <div class="form-group">
                         <label for="namn">Nyckel</label>
