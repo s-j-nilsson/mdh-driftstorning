@@ -1,4 +1,4 @@
-package se.mdh.driftstorning.admin.Configuration;
+package se.mdh.driftstorning.admin.configuration;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.annotation.Bean;
