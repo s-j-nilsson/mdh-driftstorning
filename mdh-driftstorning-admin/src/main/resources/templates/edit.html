@@ -44,6 +44,7 @@
                         <div class="form-group col-md-6">
                             <label for="starttid">Starttid</label>
                             <input type="time" class="form-control" name="startTid" id="starttid" th:value="${driftstorning.startTid}"/>
+                            <div class="error" th:if="${#fields.hasErrors('startTid')}" th:errors="*{startTid}">Name Error</div>
                         </div>
                     </div>
                     <div class="row">
@@ -53,8 +54,9 @@
 
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="sluttid">Starttid</label>
+                            <label for="sluttid">Sluttid</label>
                             <input type="time" class="form-control" name="slutTid" id="sluttid" th:value="${driftstorning.slutTid}"/>
+                            <div class="error" th:if="${#fields.hasErrors('slutTid')}" th:errors="*{slutTid}">Name Error</div>
                         </div>
                     </div>
                     <div class="form-group">

@@ -7,13 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.mdh.driftstorning.admin.repository.AnledningRepository;
 import se.mdh.driftstorning.admin.repository.DriftstorningRepository;
 import se.mdh.driftstorning.admin.repository.KanalRepository;
+import se.mdh.driftstorning.common.model.AnledningPost;
 import se.mdh.driftstorning.common.model.DriftstorningPost;
+import se.mdh.driftstorning.common.model.KanalPost;
 
 @Controller
 public class DriftstorningController {
@@ -39,30 +42,43 @@ public class DriftstorningController {
   @GetMapping("/create")
   public String create(DriftstorningPost driftstorningPost, Model model) {
     model.addAttribute("driftstorning", driftstorningPost);
-    model.addAttribute("kanaler", kanalRepository.findAll());
-    model.addAttribute("anledningar", anledningRepository.findAll());
-    List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
-    List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
-
-    List<String> tidigareMeddelandenSv = byMeddelandeSvIsNotNull.stream()
-        .map(d -> d.getMeddelandeSv())
-        .sorted()
-        .collect(Collectors.toList());
-    model.addAttribute("tidigareMeddelandenSv", tidigareMeddelandenSv);
-
-    List<String> tidigareMeddelandenEn = byMeddelandeEnIsNotNull.stream()
-        .map(d -> d.getMeddelandeEn())
-        .sorted()
-        .collect(Collectors.toList());
-    model.addAttribute("tidigareMeddelandenEn", tidigareMeddelandenEn);
 
     return "create";
   }
 
+  @ModelAttribute("kanaler")
+  public List<KanalPost> getKanaler() {
+    return kanalRepository.findAll();
+  }
+
+  @ModelAttribute("anledningar")
+  public List<AnledningPost> getAnledningar() {
+    return anledningRepository.findAll();
+  }
+
+
+  @ModelAttribute("tidigareMeddelandenSv")
+  public List<String> getTidigareMeddelandenSv() {
+    List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
+    return byMeddelandeSvIsNotNull.stream()
+        .map(d -> d.getMeddelandeSv())
+        .sorted()
+        .collect(Collectors.toList());
+  }
+
+  @ModelAttribute("tidigareMeddelandenEn")
+  public List<String> getTidigareMeddelandenEn() {
+    List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
+    return byMeddelandeEnIsNotNull.stream()
+        .map(d -> d.getMeddelandeEn())
+        .sorted()
+        .collect(Collectors.toList());
+  }
+
   @PostMapping("/create")
-  public String create(@Valid DriftstorningPost driftstorningPost, BindingResult bindingResult) {
+  public String create(@Valid @ModelAttribute("driftstorning")DriftstorningPost driftstorningPost, BindingResult bindingResult) {
     if(bindingResult.hasErrors()) {
-      return "forward:/create";
+      return "create";
     } else {
       driftstorningRepository.save(driftstorningPost);
       return "redirect:/list";
@@ -86,22 +102,7 @@ public class DriftstorningController {
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable String id, Model model) {
     model.addAttribute("driftstorning", driftstorningRepository.findById(id).get());
-    model.addAttribute("kanaler", kanalRepository.findAll());
-    model.addAttribute("anledningar", anledningRepository.findAll());
-    List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
-    List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
 
-    List<String> tidigareMeddelandenSv = byMeddelandeSvIsNotNull.stream()
-        .map(d -> d.getMeddelandeSv())
-        .sorted()
-        .collect(Collectors.toList());
-    model.addAttribute("tidigareMeddelandenSv", tidigareMeddelandenSv);
-
-    List<String> tidigareMeddelandenEn = byMeddelandeEnIsNotNull.stream()
-        .map(d -> d.getMeddelandeEn())
-        .sorted()
-        .collect(Collectors.toList());
-    model.addAttribute("tidigareMeddelandenEn", tidigareMeddelandenEn);
     return "edit";
   }
 

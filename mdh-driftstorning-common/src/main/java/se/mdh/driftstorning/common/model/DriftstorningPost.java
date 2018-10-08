@@ -22,13 +22,15 @@ public class DriftstorningPost {
 	private LocalDate startDatum;
 
 	@DateTimeFormat(pattern="HH:mm")
+        @NotNull(message = "Fältet måste ha ett värde")
 	private LocalTime startTid;
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate slutDatum;
 
 	@DateTimeFormat(pattern="HH:mm")
-	private LocalTime slutTid;
+        @NotNull(message = "Fältet måste ha ett värde")
+        private LocalTime slutTid;
 
 	@NotNull(message = "Fältet måste ha ett värde")
 	@DBRef
