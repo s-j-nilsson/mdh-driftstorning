@@ -121,4 +121,9 @@ public class DriftstorningController {
         .sorted()
         .collect(Collectors.toList());
   }
+
+  @ModelAttribute("nivaer")
+  public DriftstorningPost.Niva[] getNivaer() {
+    return DriftstorningPost.Niva.values();
+  }
 }

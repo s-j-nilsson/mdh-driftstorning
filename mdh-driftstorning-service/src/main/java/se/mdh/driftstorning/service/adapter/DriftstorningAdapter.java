@@ -13,7 +13,7 @@ public class DriftstorningAdapter {
   public Driftstorning convertDriftstorningPost(@NotNull DriftstorningPost driftstorningPost) {
     Driftstorning driftstorning = new Driftstorning();
     driftstorning.setKanal(driftstorningPost.getKanalPost().getNamn());
-    driftstorning.setNiva(Driftstorning.Niva.ERROR);
+    driftstorning.setNiva(Driftstorning.Niva.valueOf(driftstorningPost.getNiva().name()));
     driftstorning.setOrsakskod(driftstorningPost.getAnledningPost().getNamn());
     driftstorning.setMeddelandeSv(StringUtils.isEmpty(driftstorningPost.getMeddelandeSv()) ? driftstorningPost.getAnledningPost().getMeddelandeSv() : driftstorningPost.getMeddelandeSv());
     driftstorning.setMeddelandeEn(StringUtils.isEmpty(driftstorningPost.getMeddelandeEn()) ? driftstorningPost.getAnledningPost().getMeddelandeEn() : driftstorningPost.getMeddelandeEn());

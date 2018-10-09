@@ -27,13 +27,22 @@
                 </h3>
                 <h2>Skapa driftstörning</h2>
                 <form action="/create" th:object="${driftstorning}" method="post">
-                    <div class="form-group">
-                        <label for="kanalPost">Kanal:</label>
-                        <select class="form-control" id="kanalPost" th:field="*{kanalPost}">
-                            <option th:each="kanalPost : ${kanaler}" th:value="${kanalPost.id}" th:text="${kanalPost.text}">
-                            </option>
-                        </select>
-                        <div class="error" th:if="${#fields.hasErrors('kanalPost')}" th:errors="*{kanalPost}">Name Error</div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="kanalPost">Kanal</label>
+                            <select class="form-control" id="kanalPost" th:field="*{kanalPost}">
+                                <option th:each="kanalPost : ${kanaler}" th:value="${kanalPost.id}" th:text="${kanalPost.text}">
+                                </option>
+                            </select>
+                            <div class="error" th:if="${#fields.hasErrors('kanalPost')}" th:errors="*{kanalPost}">Name Error</div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="niva">Nivå</label>
+                            <select class="form-control" id="niva" th:field="*{niva}">
+                                <option th:each="niva : ${nivaer}" th:value="${niva}" th:text="${niva}">
+                                </option>
+                            </select>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
