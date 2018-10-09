@@ -2,6 +2,7 @@ package se.mdh.driftstorning.common.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -14,7 +15,7 @@ public class DriftstorningPost {
 	@Id
 	private String id;
 
-	@NotNull(message = "Fältet måste ha ett värde")
+	@NotEmpty(message = "Fältet måste ha ett värde")
 	@DBRef
 	private KanalPost kanalPost;
 
@@ -29,10 +30,10 @@ public class DriftstorningPost {
 	private LocalDate slutDatum;
 
 	@DateTimeFormat(pattern="HH:mm")
-        @NotNull(message = "Fältet måste ha ett värde")
+        @NotEmpty(message = "Fältet måste ha ett värde")
         private LocalTime slutTid;
 
-	@NotNull(message = "Fältet måste ha ett värde")
+	@NotEmpty(message = "Fältet måste ha ett värde")
 	@DBRef
 	private AnledningPost anledningPost;
 
