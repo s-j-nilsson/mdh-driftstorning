@@ -12,6 +12,7 @@ import se.mdh.driftstorning.service.model.Driftstorning;
 public class DriftstorningAdapter {
   public Driftstorning convertDriftstorningPost(@NotNull DriftstorningPost driftstorningPost) {
     Driftstorning driftstorning = new Driftstorning();
+    driftstorning.setDriftstorningId(driftstorningPost.getId());
     driftstorning.setKanal(driftstorningPost.getKanalPost().getNamn());
     driftstorning.setNiva(Driftstorning.Niva.valueOf(driftstorningPost.getNiva().name()));
     driftstorning.setOrsakskod(driftstorningPost.getAnledningPost().getNamn());

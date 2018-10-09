@@ -1,8 +1,10 @@
 package se.mdh.driftstorning.service.model;
 
 import java.time.LocalDateTime;
+import org.springframework.hateoas.ResourceSupport;
 
-public class Driftstorning {
+public class Driftstorning extends ResourceSupport {
+private String driftstorningId;
 private String kanal;
 private LocalDateTime start;
 private LocalDateTime slut;
@@ -18,6 +20,14 @@ private Niva niva;
   }
 
   public Driftstorning() {
+  }
+
+  public String getDriftstorningId() {
+    return driftstorningId;
+  }
+
+  public void setDriftstorningId(String driftstorningId) {
+    this.driftstorningId = driftstorningId;
   }
 
   public String getKanal() {
