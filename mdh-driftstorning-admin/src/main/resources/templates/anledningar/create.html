@@ -16,18 +16,23 @@
                 <form action="/anledningar/create" th:object="${anledning}" method="post">
                     <div class="form-group">
                         <label for="namn">Nyckel</label>
-                        <input type="text" class="form-control" name="namn" />
+                        <input type="text" class="form-control" name="namn" id="namn" />
                         <div class="error" th:if="${#fields.hasErrors('namn')}" th:errors="*{namn}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="text">Text</label>
-                        <input type="text" class="form-control" name="text" />
+                        <input type="text" class="form-control"  name="text" id="text" />
                         <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Name Error</div>
                     </div>
                     <div class="form-group">
-                        <label for="meddelande">Meddelande</label>
-                        <input type="text" class="form-control" name="meddelande" />
-                        <div class="error" th:if="${#fields.hasErrors('meddelande')}" th:errors="*{meddelande}">Name Error</div>
+                        <label for="meddelandeSv">Meddelande (sv)</label>
+                        <input type="text" class="form-control" name="meddelandeSv" id="meddelandeSv" />
+                        <div class="error" th:if="${#fields.hasErrors('meddelandeSv')}" th:errors="*{meddelandeSv}">Name Error</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="meddelandeEn">Meddelande (en)</label>
+                        <input type="text" class="form-control" name="meddelandeEn" id="meddelandeEn" />
+                        <div class="error" th:if="${#fields.hasErrors('meddelandeEn')}" th:errors="*{meddelandeEn}">Name Error</div>
                     </div>
 
                     <button type="submit" class="btn btn-success">Save</button>

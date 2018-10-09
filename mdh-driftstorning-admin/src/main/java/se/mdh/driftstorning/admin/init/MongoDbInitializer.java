@@ -48,21 +48,29 @@ public class MongoDbInitializer implements CommandLineRunner {
       AnledningPost anledningPost1 = new AnledningPost();
       anledningPost1.setNamn("uppgradering");
       anledningPost1.setText("Uppgradering");
+      anledningPost1.setMeddelandeSv("Defaultmeddelande för uppgradering");
+      anledningPost1.setMeddelandeEn("Default message for upgrade");
       anledningRepository.save(anledningPost1);
 
       AnledningPost anledningPost2 = new AnledningPost();
       anledningPost2.setNamn("backup");
       anledningPost2.setText("Backup");
+      anledningPost2.setMeddelandeSv("Defaultmeddelande för backup");
+      anledningPost2.setMeddelandeEn("Default message for backup");
       anledningRepository.save(anledningPost2);
 
       AnledningPost anledningPost3 = new AnledningPost();
       anledningPost3.setNamn("patchning");
       anledningPost3.setText("Patchning");
+      anledningPost3.setMeddelandeSv("Defaultmeddelande för patchning");
+      anledningPost3.setMeddelandeEn("Default message for patching");
       anledningRepository.save(anledningPost3);
 
       AnledningPost anledningPost4 = new AnledningPost();
       anledningPost4.setNamn("prestanda");
       anledningPost4.setText("Prestandaproblem");
+      anledningPost4.setMeddelandeSv("Defaultmeddelande för prestandaproblem");
+      anledningPost4.setMeddelandeEn("Default message for performance issues");
       anledningRepository.save(anledningPost4);
     }
   }

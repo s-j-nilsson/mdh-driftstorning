@@ -10,13 +10,14 @@
         <div layout:fragment="content" class="row">
             <div class="col-xs-8 col-md-8">
                 <h3>
-                    <a href="/anledningar/list" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> anledningar</a>
+                    <a href="/anledningar/list" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Anledningar</a>
                 </h3>
                 <h2 th:text="${anledning.text}"></h2>
                 <dl class="list">
                     <dt>Nyckel</dt>
                     <dd th:text="${anledning.namn}"></dd>
-                    <dd th:text="${anledning.meddelande}"></dd>
+                    <dd th:text="${anledning.meddelandeSv}"></dd>
+                    <dd th:text="${anledning.meddelandeEn}"></dd>
                 </dl>
                 <form action="/anledningar/delete" method="post">
                     <input type="hidden" name="id" th:value="${anledning.id}" />

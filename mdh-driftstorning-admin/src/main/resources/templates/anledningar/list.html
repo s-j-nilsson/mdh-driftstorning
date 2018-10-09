@@ -27,14 +27,16 @@
                             <tr>
                                 <th>Nyckel</th>
                                 <th>Text</th>
-                                <th>Meddelande</th>
+                                <th>Meddelande (sv)</th>
+                                <th>Meddelande (en)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="anledning : ${anledningar}">
                                 <td><a th:text="${anledning.namn}" th:href="@{'/anledningar/show/' + ${anledning.id}}"></a></td>
                                 <td th:text="${anledning.text}"></td>
-                                <td th:text="${anledning.meddelande}"></td>
+                                <td th:text="${anledning.meddelandeSv}"></td>
+                                <td th:text="${anledning.meddelandeEn}"></td>
                             </tr>
                         </tbody>
                     </table>

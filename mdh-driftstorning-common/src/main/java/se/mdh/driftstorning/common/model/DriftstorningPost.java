@@ -15,7 +15,6 @@ public class DriftstorningPost {
 	@Id
 	private String id;
 
-	@NotEmpty(message = "Fältet måste ha ett värde")
 	@DBRef
 	private KanalPost kanalPost;
 
@@ -30,10 +29,9 @@ public class DriftstorningPost {
 	private LocalDate slutDatum;
 
 	@DateTimeFormat(pattern="HH:mm")
-        @NotEmpty(message = "Fältet måste ha ett värde")
+        @NotNull(message = "Fältet måste ha ett värde")
         private LocalTime slutTid;
 
-	@NotEmpty(message = "Fältet måste ha ett värde")
 	@DBRef
 	private AnledningPost anledningPost;
 

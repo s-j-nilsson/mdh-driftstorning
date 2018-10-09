@@ -46,37 +46,6 @@ public class DriftstorningController {
     return "create";
   }
 
-  @ModelAttribute("kanaler")
-  public List<KanalPost> getKanaler() {
-    return kanalRepository.findAllByOrderByTextAsc();
-  }
-
-  @ModelAttribute("anledningar")
-  public List<AnledningPost> getAnledningar() {
-    return anledningRepository.findAllByOrderByTextAsc();
-  }
-
-
-  @ModelAttribute("tidigareMeddelandenSv")
-  public List<String> getTidigareMeddelandenSv() {
-    List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
-    return byMeddelandeSvIsNotNull.stream()
-        .map(d -> d.getMeddelandeSv())
-        .distinct()
-        .sorted()
-        .collect(Collectors.toList());
-  }
-
-  @ModelAttribute("tidigareMeddelandenEn")
-  public List<String> getTidigareMeddelandenEn() {
-    List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
-    return byMeddelandeEnIsNotNull.stream()
-        .map(d -> d.getMeddelandeEn())
-        .distinct()
-        .sorted()
-        .collect(Collectors.toList());
-  }
-
   @PostMapping("/create")
   public String create(@Valid @ModelAttribute("driftstorning")DriftstorningPost driftstorningPost, BindingResult bindingResult) {
     if(bindingResult.hasErrors()) {
@@ -116,5 +85,36 @@ public class DriftstorningController {
       driftstorningRepository.save(driftstorningPost);
       return "redirect:/list";
     }
+  }
+
+  @ModelAttribute("kanaler")
+  public List<KanalPost> getKanaler() {
+    return kanalRepository.findAllByOrderByTextAsc();
+  }
+
+  @ModelAttribute("anledningar")
+  public List<AnledningPost> getAnledningar() {
+    return anledningRepository.findAllByOrderByTextAsc();
+  }
+
+
+  @ModelAttribute("tidigareMeddelandenSv")
+  public List<String> getTidigareMeddelandenSv() {
+    List<DriftstorningPost> byMeddelandeSvIsNotNull = driftstorningRepository.findByMeddelandeSvIsNotNull();
+    return byMeddelandeSvIsNotNull.stream()
+        .map(d -> d.getMeddelandeSv())
+        .distinct()
+        .sorted()
+        .collect(Collectors.toList());
+  }
+
+  @ModelAttribute("tidigareMeddelandenEn")
+  public List<String> getTidigareMeddelandenEn() {
+    List<DriftstorningPost> byMeddelandeEnIsNotNull = driftstorningRepository.findByMeddelandeEnIsNotNull();
+    return byMeddelandeEnIsNotNull.stream()
+        .map(d -> d.getMeddelandeEn())
+        .distinct()
+        .sorted()
+        .collect(Collectors.toList());
   }
 }

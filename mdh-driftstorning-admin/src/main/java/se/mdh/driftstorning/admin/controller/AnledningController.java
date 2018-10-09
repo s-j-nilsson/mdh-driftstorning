@@ -70,7 +70,7 @@ public class AnledningController {
   @PostMapping("/update")
   public String update(@Valid AnledningPost anledning, BindingResult bindingResult) {
     if(bindingResult.hasErrors()) {
-      return "anledningar/edit/"+ anledning.getId();
+      return "forward:/anledningar/edit/"+ anledning.getId();
     } else {
       anledningRepository.save(anledning);
       return "redirect:/anledningar/list";

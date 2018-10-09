@@ -72,7 +72,7 @@ public class KanalController {
   @PostMapping("/update")
   public String update(@Valid KanalPost kanal, BindingResult bindingResult) {
     if(bindingResult.hasErrors()) {
-      return "kanaler/edit/"+ kanal.getId();
+      return "forward:/kanaler/edit/"+ kanal.getId();
     } else {
       kanalRepository.save(kanal);
       return "redirect:/kanaler/list";

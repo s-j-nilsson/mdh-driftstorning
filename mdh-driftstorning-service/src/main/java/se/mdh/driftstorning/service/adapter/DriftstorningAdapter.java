@@ -14,7 +14,7 @@ public class DriftstorningAdapter {
     driftstorning.setKanal(driftstorningPost.getKanalPost().getNamn());
     driftstorning.setNiva(Driftstorning.Niva.ERROR);
     driftstorning.setOrsakskod(driftstorningPost.getAnledningPost().getNamn());
-    driftstorning.setMeddelandeSv(driftstorningPost.getAnledningPost().getMeddelande());
+    driftstorning.setMeddelandeSv(driftstorningPost.getAnledningPost().getMeddelandeSv());
     driftstorning.setStart(LocalDateTime.of(driftstorningPost.getStartDatum() != null ? driftstorningPost.getStartDatum() : LocalDate.now(),
                                             driftstorningPost.getStartTid()));
     driftstorning.setSlut(LocalDateTime.of(driftstorningPost.getSlutDatum() != null ? driftstorningPost.getSlutDatum() : LocalDate.now(), driftstorningPost.getSlutTid()));

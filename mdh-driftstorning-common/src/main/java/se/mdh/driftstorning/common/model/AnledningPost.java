@@ -1,6 +1,7 @@
 package se.mdh.driftstorning.common.model;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,7 +19,8 @@ public class AnledningPost {
   @NotEmpty(message = "Fältet måste ha ett värde")
   private String text;
 
-  private String meddelande;
+  private String meddelandeSv;
+  private String meddelandeEn;
 
   public String getId() {
     return id;
@@ -44,11 +46,19 @@ public class AnledningPost {
     this.text = text;
   }
 
-  public String getMeddelande() {
-    return meddelande;
+  public String getMeddelandeSv() {
+    return meddelandeSv;
   }
 
-  public void setMeddelande(String meddelande) {
-    this.meddelande = meddelande;
+  public void setMeddelandeSv(String meddelandeSv) {
+    this.meddelandeSv = meddelandeSv;
+  }
+
+  public String getMeddelandeEn() {
+    return meddelandeEn;
+  }
+
+  public void setMeddelandeEn(String meddelandeEn) {
+    this.meddelandeEn = meddelandeEn;
   }
 }
