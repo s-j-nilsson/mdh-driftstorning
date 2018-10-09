@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.mdh.driftstorning.admin.repository.AnledningRepository;
 import se.mdh.driftstorning.admin.repository.DriftstorningRepository;
 import se.mdh.driftstorning.admin.repository.KanalRepository;
@@ -72,15 +73,18 @@ public class DriftstorningController {
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable String id, Model model) {
-    model.addAttribute("driftstorning", driftstorningRepository.findById(id).get());
-
+    if(!model.containsAttribute("driftstorning")) {
+      model.addAttribute("driftstorning", driftstorningRepository.findById(id).get());
+    }
     return "edit";
   }
 
   @PostMapping("/update")
-  public String update(@Valid DriftstorningPost driftstorningPost, BindingResult bindingResult) {
+  public String update(@Valid DriftstorningPost driftstorningPost, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
     if(bindingResult.hasErrors()) {
-      return "forward:/edit/"+ driftstorningPost.getId();
+      redirectAttributes.addFlashAttribute("driftstorning", driftstorningPost);
+      redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.driftstorning", bindingResult);
+      return "redirect:/edit/"+ driftstorningPost.getId();
     } else {
       driftstorningRepository.save(driftstorningPost);
       return "redirect:/list";
