@@ -8,7 +8,7 @@ private LocalDateTime start;
 private LocalDateTime slut;
 private String orsakskod;
 private String meddelandeSv;
-private String getMeddelandeEn;
+private String meddelandeEn;
 private Niva niva;
 
   public enum Niva {
@@ -60,12 +60,12 @@ private Niva niva;
     this.meddelandeSv = meddelandeSv;
   }
 
-  public String getGetMeddelandeEn() {
-    return getMeddelandeEn;
+  public String getMeddelandeEn() {
+    return meddelandeEn;
   }
 
-  public void setGetMeddelandeEn(String getMeddelandeEn) {
-    this.getMeddelandeEn = getMeddelandeEn;
+  public void setMeddelandeEn(String meddelandeEn) {
+    this.meddelandeEn = meddelandeEn;
   }
 
   public Niva getNiva() {
@@ -84,7 +84,7 @@ private Niva niva;
         ", slut=" + slut +
         ", orsakskod='" + orsakskod + '\'' +
         ", meddelandeSv='" + meddelandeSv + '\'' +
-        ", getMeddelandeEn='" + getMeddelandeEn + '\'' +
+        ", meddelandeEn='" + meddelandeEn + '\'' +
         ", niva=" + niva +
         '}';
   }
