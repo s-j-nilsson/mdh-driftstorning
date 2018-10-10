@@ -1,0 +1,29 @@
+version: "3.5"
+services:
+  mongocontainer:
+    image: mongo
+    ports:
+    - 27017:27017
+    networks:
+    - driftstorningnetwork
+
+  # APP  ***************************************************************************************
+  mdh-driftstorning-admin:
+    build: mdh-driftstorning-admin/docker
+    ports:
+    - 8081:8081
+    networks:
+    - driftstorningnetwork
+    environment:
+    - "SPRING_PROFILES_ACTIVE=init-mongo-data"
+
+  # APP  ***************************************************************************************
+  mdh-driftstorning-service:
+    build: mdh-driftstorning-service/docker
+    ports:
+    - 8080:8080
+    networks:
+    - driftstorningnetwork
+
+networks:
+  driftstorningnetwork:
