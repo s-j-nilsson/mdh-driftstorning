@@ -5,7 +5,7 @@
 
 3. docker build -t driftstorning-service:latest .
 
-4. docker run -p 8080:8080 --name driftstorning-service-container --network=driftstorningnetwork driftstorning-service
+4. docker run -p 8081:8081 --name driftstorning-service-container --network=driftstorningnetwork driftstorning-service
 
 
 **För att köra i IDE, t.ex. Intellij**
