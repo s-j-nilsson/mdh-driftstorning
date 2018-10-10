@@ -3,12 +3,14 @@ package se.mdh.driftstorning.service.service;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.validation.constraints.NotNull;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import se.mdh.driftstorning.common.model.DriftstorningPost;
+import se.mdh.driftstorning.service.adapter.DriftstorningAdapter;
 import se.mdh.driftstorning.service.adapter.DriftstorningarAdapter;
 import se.mdh.driftstorning.service.model.Driftstorning;
 import se.mdh.driftstorning.service.model.Driftstorningar;
@@ -20,10 +22,21 @@ public class DriftstorningService {
 
   private final DriftstorningRepository driftstorningRepository;
   private final DriftstorningarAdapter driftstorningarAdapter;
+  private final DriftstorningAdapter driftstorningAdapter;
 
-  public DriftstorningService(DriftstorningRepository driftstorningRepository, DriftstorningarAdapter driftstorningarAdapter) {
+  public DriftstorningService(DriftstorningRepository driftstorningRepository, DriftstorningarAdapter driftstorningarAdapter, DriftstorningAdapter driftstorningAdapter) {
     this.driftstorningRepository = driftstorningRepository;
     this.driftstorningarAdapter = driftstorningarAdapter;
+    this.driftstorningAdapter = driftstorningAdapter;
+  }
+
+  public Optional <Driftstorning> getDriftstorning(String id) {
+    Optional<DriftstorningPost> driftstorningPost = driftstorningRepository.findById(id);
+    if(driftstorningPost.isPresent()) {
+      return Optional.of(driftstorningAdapter.convertDriftstorningPost(driftstorningPost.get()));
+    } else {
+      return Optional.empty();
+    }
   }
 
   /**

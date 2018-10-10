@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.mdh.driftstorning.admin.repository.AnledningRepository;
 import se.mdh.driftstorning.common.model.AnledningPost;
 
@@ -63,14 +64,18 @@ public class AnledningController {
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable String id, Model model) {
-    model.addAttribute("anledning", anledningRepository.findById(id).get());
+    if(!model.containsAttribute("anledning")) {
+      model.addAttribute("anledning", anledningRepository.findById(id).get());
+    }
     return "anledningar/edit";
   }
 
   @PostMapping("/update")
-  public String update(@Valid AnledningPost anledning, BindingResult bindingResult) {
+  public String update(@Valid AnledningPost anledning, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
     if(bindingResult.hasErrors()) {
-      return "forward:/anledningar/edit/"+ anledning.getId();
+      redirectAttributes.addFlashAttribute("anledning", anledning);
+      redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.anledning", bindingResult);
+      return "redirect:/anledningar/edit/"+ anledning.getId();
     } else {
       anledningRepository.save(anledning);
       return "redirect:/anledningar/list";

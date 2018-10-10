@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.mdh.driftstorning.admin.repository.KanalRepository;
 import se.mdh.driftstorning.common.model.KanalPost;
 
@@ -65,14 +66,18 @@ public class KanalController {
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable String id, Model model) {
-    model.addAttribute("kanal", kanalRepository.findById(id).get());
+    if(!model.containsAttribute("kanal")) {
+      model.addAttribute("kanal", kanalRepository.findById(id).get());
+    }
     return "kanaler/edit";
   }
 
   @PostMapping("/update")
-  public String update(@Valid KanalPost kanal, BindingResult bindingResult) {
+  public String update(@Valid KanalPost kanal, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
     if(bindingResult.hasErrors()) {
-      return "forward:/kanaler/edit/"+ kanal.getId();
+      redirectAttributes.addFlashAttribute("kanal", kanal);
+      redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.kanal", bindingResult);
+      return "redirect:/kanaler/edit/"+ kanal.getId();
     } else {
       kanalRepository.save(kanal);
       return "redirect:/kanaler/list";

@@ -13,6 +13,6 @@
 
 2. Main class: MdhDriftstorningAdminApplication
 
-    Env: -Dspring.profiles.active=non-docker
+    Env: -Dspring.profiles.active=non-docker,init-mongo-data
 
 

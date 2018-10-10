@@ -32,6 +32,14 @@ public class DriftstorningPost {
         @NotNull(message = "Fältet måste ha ett värde")
         private LocalTime slutTid;
 
+	private Niva niva;
+
+	public enum Niva {
+		ERROR,
+		WARN,
+		INFO;
+	}
+
 	@DBRef
 	private AnledningPost anledningPost;
 
@@ -111,15 +119,27 @@ public class DriftstorningPost {
 		this.meddelandeEn = meddelandeEn;
 	}
 
-	@Override
-	public String toString() {
-		return "DriftstorningPost [id=" + id + ", kanalPost=" + kanalPost.getNamn()
-				+ ", startDatum=" + startDatum
-				+ ", startTid=" + startTid
-				+ ", slutDatum=" + slutDatum
-				+ ", slutTid=" + slutTid
-				+ ", anledningPost=" + anledningPost.getNamn()
-				+ "]";
+	public Niva getNiva() {
+		return niva;
 	}
 
+	public void setNiva(Niva niva) {
+		this.niva = niva;
+	}
+
+	@Override
+	public String toString() {
+		return "DriftstorningPost{" +
+				"id='" + id + '\'' +
+				", kanalPost=" + kanalPost +
+				", startDatum=" + startDatum +
+				", startTid=" + startTid +
+				", slutDatum=" + slutDatum +
+				", slutTid=" + slutTid +
+				", niva=" + niva +
+				", anledningPost=" + anledningPost +
+				", meddelandeSv='" + meddelandeSv + '\'' +
+				", meddelandeEn='" + meddelandeEn + '\'' +
+				'}';
+	}
 }

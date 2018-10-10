@@ -29,6 +29,7 @@
                                 <th>Start</th>
                                 <th>Slut</th>
                                 <th>Anledning</th>
+                                <th>Nivå</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,7 @@
                                 <td th:text="${#strings.defaultString(driftstorning.startDatum, '') + ' ' + driftstorning.startTid}"></td>
                                 <td th:text="${#strings.defaultString(driftstorning.slutDatum, '') + ' ' + driftstorning.slutTid}"></td>
                                 <td th:text="${driftstorning.anledningPost.text}"></td>
+                                <td th:text="${driftstorning.niva}"></td>
                             </tr>
                         </tbody>
                     </table>
