@@ -2,6 +2,8 @@ version: "3.5"
 services:
   mongocontainer:
     image: mongo
+    volumes:
+    - /tmp/mongodb/db:/data/db
     ports:
     - 27017:27017
     networks:
