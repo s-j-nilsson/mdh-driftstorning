@@ -7,10 +7,9 @@
         <title>Skapa Anledning</title>
     </head>
     <body>
-        <div layout:fragment="content" class="row">
-            <div class="col-xs-8 col-md-8">
+    <main layout:fragment="content" class="p-lg-3">
                 <h3>
-                    <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Anledningar</a>
+                    <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="oi oi-list"></span> Anledningar</a>
                 </h3>
                 <h2>Skapa Anledning</h2>
                 <form action="/anledningar/create" th:object="${anledning}" method="post">
@@ -37,7 +36,6 @@
 
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
-            </div>
-        </div>
+        </main>
     </body>
 </html>

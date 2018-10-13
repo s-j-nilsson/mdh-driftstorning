@@ -20,10 +20,9 @@
         </script>
     </head>
     <body>
-        <div layout:fragment="content" class="row">
-            <div class="col-xs-8 col-md-8">
+    <main layout:fragment="content" class="p-lg-3">
                 <h3>
-                    <a href="/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftstörning</a>
+                    <a href="/list" class="btn btn-lg btn-primary"><span class="oi oi-list"></span> Driftstörning</a>
                 </h3>
                 <h2>Uppdatera driftstörning</h2>
                 <form action="/update" th:object="${driftstorning}" method="post">
@@ -109,7 +108,6 @@
                     <input type="hidden" name="id" th:value="${driftstorning.id}" />
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
-            </div>
-        </div>
+        </main>
     </body>
 </html>

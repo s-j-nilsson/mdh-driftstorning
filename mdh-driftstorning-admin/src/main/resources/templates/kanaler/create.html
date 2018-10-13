@@ -7,10 +7,9 @@
         <title>Skapa Kanal</title>
     </head>
     <body>
-        <div layout:fragment="content" class="row">
-            <div class="col-xs-8 col-md-8">
+    <main layout:fragment="content" class="p-lg-3">
                 <h3>
-                    <a href="/kanaler/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Kanaler</a>
+                    <a href="/kanaler/list" class="btn btn-lg btn-primary"><span class="oi oi-list" aria-hidden="true"></span> Kanaler</a>
                 </h3>
                 <h2>Skapa Kanal</h2>
                 <form action="/kanaler/create" th:object="${kanal}" method="post">
@@ -27,7 +26,6 @@
 
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
-            </div>
-        </div>
+        </main>
     </body>
 </html>

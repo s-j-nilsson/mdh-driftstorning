@@ -7,10 +7,9 @@
         <title>Visa anledning</title>
     </head>
     <body>
-        <div layout:fragment="content" class="row">
-            <div class="col-xs-8 col-md-8">
+    <main layout:fragment="content" class="p-lg-3">
                 <h3>
-                    <a href="/anledningar/list" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Anledningar</a>
+                    <a href="/anledningar/list" class="btn btn-primary"><span class="oi oi-list"></span> Anledningar</a>
                 </h3>
                 <h2 th:text="${anledning.text}"></h2>
                 <dl class="list">
@@ -24,7 +23,6 @@
                     <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
                         <a th:href="@{'/anledningar/edit/' + ${anledning.id}}" class="btn btn-warning">Edit</a></h2>
                 </form>
-            </div>
-        </div>
+        </main>
     </body>
 </html>

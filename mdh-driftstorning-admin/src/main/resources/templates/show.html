@@ -7,32 +7,30 @@
         <title>Visa Driftstörning</title>
     </head>
     <body>
-        <div layout:fragment="content" class="row">
-            <div class="col-xs-8 col-md-8">
-                <h3>
-                    <a href="/list" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Driftstörning</a>
-                </h3>
-                <h2 th:text="${driftstorning.kanalPost.text}"></h2>
-                <dl class="list">
-                    <dt>Nivå</dt>
-                    <dd th:text="${driftstorning.niva}"></dd>
-                    <dt>Start</dt>
-                    <dd th:text="${#strings.defaultString(driftstorning.startDatum, '') + ' ' + driftstorning.startTid}"></dd>
-                    <dt>Slut</dt>
-                    <dd th:text="${#strings.defaultString(driftstorning.slutDatum, '') + ' ' + driftstorning.slutTid}"></dd>
-                    <dt>Anledning</dt>
-                    <dd th:text="${driftstorning.anledningPost.text}"></dd>
-                    <dt>Meddelande på svenska</dt>
-                    <dd th:text="${driftstorning.meddelandeSv}"></dd>
-                    <dt>Meddelande på engelska</dt>
-                    <dd th:text="${driftstorning.meddelandeEn}"></dd>
-                </dl>
-                <form action="/delete" method="post">
-                    <input type="hidden" name="id" th:value="${driftstorning.id}" />
-                    <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
-                        <a th:href="@{'/edit/' + ${driftstorning.id}}" class="btn btn-warning">Edit</a></h2>
-                </form>
-            </div>
-        </div>
+    <main layout:fragment="content" class="p-lg-3">
+            <h3>
+                <a href="/list" class="btn btn-primary"><span class="oi oi-list"></span> Driftstörning</a>
+            </h3>
+            <h2 th:text="${driftstorning.kanalPost.text}"></h2>
+            <dl class="list">
+                <dt>Nivå</dt>
+                <dd th:text="${driftstorning.niva}"></dd>
+                <dt>Start</dt>
+                <dd th:text="${#strings.defaultString(driftstorning.startDatum, '') + ' ' + driftstorning.startTid}"></dd>
+                <dt>Slut</dt>
+                <dd th:text="${#strings.defaultString(driftstorning.slutDatum, '') + ' ' + driftstorning.slutTid}"></dd>
+                <dt>Anledning</dt>
+                <dd th:text="${driftstorning.anledningPost.text}"></dd>
+                <dt>Meddelande på svenska</dt>
+                <dd th:text="${driftstorning.meddelandeSv}"></dd>
+                <dt>Meddelande på engelska</dt>
+                <dd th:text="${driftstorning.meddelandeEn}"></dd>
+            </dl>
+            <form action="/delete" method="post">
+                <input type="hidden" name="id" th:value="${driftstorning.id}" />
+                <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
+                    <a th:href="@{'/edit/' + ${driftstorning.id}}" class="btn btn-warning">Edit</a></h2>
+            </form>
+        </main>
     </body>
 </html>
