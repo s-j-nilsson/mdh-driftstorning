@@ -8,9 +8,6 @@
     </head>
     <body>
     <main layout:fragment="content" class="p-lg-3">
-                <h3>
-                    <a href="/anledningar/list" class="btn btn-primary"><span class="oi oi-list"></span> Anledningar</a>
-                </h3>
                 <h2 th:text="${anledning.text}"></h2>
                 <dl class="list">
                     <dt>Nyckel</dt>
@@ -20,8 +17,9 @@
                 </dl>
                 <form action="/anledningar/delete" method="post">
                     <input type="hidden" name="id" th:value="${anledning.id}" />
-                    <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
-                        <a th:href="@{'/anledningar/edit/' + ${anledning.id}}" class="btn btn-warning">Edit</a></h2>
+                    <input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
+                    <a th:href="@{'/anledningar/edit/' + ${anledning.id}}" class="btn btn-warning">Edit</a>
+                    <a th:href="@{'/anledningar/list'}" class="btn btn-secondary">Cancel</a>
                 </form>
         </main>
     </body>

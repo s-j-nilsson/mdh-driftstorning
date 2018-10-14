@@ -8,9 +8,6 @@
     </head>
     <body>
     <main layout:fragment="content" class="p-lg-3">
-                <h3>
-                    <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="oi oi-list"></span> Anledningar</a>
-                </h3>
                 <h2>Uppdatera Anledning</h2>
                 <form action="/anledningar/update" th:object="${anledning}" method="post">
                     <div class="form-group">
@@ -35,6 +32,7 @@
                     </div>
                     <input type="hidden" name="id" th:value="${anledning.id}" />
                     <button type="submit" class="btn btn-success">Save</button>
+                    <a th:href="@{'/anledningar/list'}" class="btn btn-secondary">Cancel</a>
                 </form>
         </main>
     </body>

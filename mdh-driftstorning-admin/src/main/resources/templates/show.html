@@ -8,9 +8,6 @@
     </head>
     <body>
     <main layout:fragment="content" class="p-lg-3">
-            <h3>
-                <a href="/list" class="btn btn-primary"><span class="oi oi-list"></span> Driftstörning</a>
-            </h3>
             <h2 th:text="${driftstorning.kanalPost.text}"></h2>
             <dl class="list">
                 <dt>Nivå</dt>
@@ -28,8 +25,9 @@
             </dl>
             <form action="/delete" method="post">
                 <input type="hidden" name="id" th:value="${driftstorning.id}" />
-                <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
-                    <a th:href="@{'/edit/' + ${driftstorning.id}}" class="btn btn-warning">Edit</a></h2>
+                <input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
+                <a th:href="@{'/edit/' + ${driftstorning.id}}" class="btn btn-warning">Edit</a>
+                <a th:href="@{'/list'}" class="btn btn-secondary">Cancel</a>
             </form>
         </main>
     </body>

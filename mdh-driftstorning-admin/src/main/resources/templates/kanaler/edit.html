@@ -8,9 +8,6 @@
     </head>
     <body>
     <main layout:fragment="content" class="p-lg-3">
-                <h3>
-                    <a href="/kanaler/list" class="btn btn-lg btn-primary"><span class="oi oi-list"></span> Kanaler</a>
-                </h3>
                 <h2>Uppdatera Kanal</h2>
                 <form action="/kanaler/update" th:object="${kanal}" method="post">
                     <div class="form-group">
@@ -25,6 +22,7 @@
                     </div>
                     <input type="hidden" name="id" th:value="${kanal.id}" />
                     <button type="submit" class="btn btn-success">Save</button>
+                    <a th:href="@{'/kanaler/list'}" class="btn btn-secondary">Cancel</a>
                 </form>
         </main>
     </body>

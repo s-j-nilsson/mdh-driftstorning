@@ -21,9 +21,7 @@
     </head>
     <body>
     <main layout:fragment="content" class="p-lg-3">
-                <h3>
-                    <a href="/list" class="btn btn-lg btn-primary"><span class="oi oi-list"></span> Driftstörning</a>
-                </h3>
+
                 <h2>Uppdatera driftstörning</h2>
                 <form action="/update" th:object="${driftstorning}" method="post">
                     <div class="row">
@@ -107,6 +105,7 @@
                     </div>
                     <input type="hidden" name="id" th:value="${driftstorning.id}" />
                     <button type="submit" class="btn btn-success">Save</button>
+                    <a th:href="@{'/list'}" class="btn btn-secondary">Cancel</a>
                 </form>
         </main>
     </body>
