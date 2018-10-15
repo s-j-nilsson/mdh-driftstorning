@@ -2,10 +2,12 @@ package se.mdh.driftstorning.common.model;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
 @Document(collection = "kanaler")
 public class KanalPost {
 
@@ -19,27 +21,4 @@ public class KanalPost {
   @NotEmpty(message = "Fältet måste ha ett värde")
   private String text;
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getNamn() {
-    return namn;
-  }
-
-  public void setNamn(String namn) {
-    this.namn = namn;
-  }
-
-  public String getText() {
-    return text;
-  }
-
-  public void setText(String text) {
-    this.text = text;
-  }
 }

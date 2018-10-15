@@ -1,11 +1,12 @@
 package se.mdh.driftstorning.common.model;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
 @Document(collection = "anledningar")
 public class AnledningPost {
 
@@ -21,44 +22,4 @@ public class AnledningPost {
 
   private String meddelandeSv;
   private String meddelandeEn;
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getNamn() {
-    return namn;
-  }
-
-  public void setNamn(String namn) {
-    this.namn = namn;
-  }
-
-  public String getText() {
-    return text;
-  }
-
-  public void setText(String text) {
-    this.text = text;
-  }
-
-  public String getMeddelandeSv() {
-    return meddelandeSv;
-  }
-
-  public void setMeddelandeSv(String meddelandeSv) {
-    this.meddelandeSv = meddelandeSv;
-  }
-
-  public String getMeddelandeEn() {
-    return meddelandeEn;
-  }
-
-  public void setMeddelandeEn(String meddelandeEn) {
-    this.meddelandeEn = meddelandeEn;
-  }
 }
